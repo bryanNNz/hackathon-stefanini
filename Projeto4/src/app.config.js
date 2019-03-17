@@ -19,5 +19,14 @@ export default function routing($stateProvider, $urlRouterProvider) {
       }
       $stateProvider.state(donoState);
       
+      let computadorState = {
+        name: 'computador',
+        url: '/computador',
+        templateUrl: './modulos/computador/computador.view.html',
+        controller: 'ComputadorController',
+        controllerAs: 'vm'
+      }
+      $stateProvider.state(computadorState);
+      
       $urlRouterProvider.otherwise('/home')  
 }

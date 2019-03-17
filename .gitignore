@@ -107,3 +107,4 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+/.metadata/
