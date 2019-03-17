@@ -3,6 +3,7 @@ package com.stefanini.projeto.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,14 +19,14 @@ public class Computador implements Serializable{
 	
 	@Id
 	@SequenceGenerator(name="SQ_CP_ID", sequenceName="SQ_CP_ID", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_CP_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="SQ_CP_ID")
 	@Column(name="CP_ID")
 	private Long id;
 	
 	@Column(name="CP_NOME")
 	private String nome;
 	
-	@OneToMany(mappedBy="computador")
+	@OneToMany(mappedBy="computador", cascade =	CascadeType.ALL)
 	private List<Monitor> monitores;
 	
 	public Computador() {

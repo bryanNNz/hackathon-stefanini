@@ -1,49 +1,139 @@
+
 <div class="jumbotron">
 	<div class="row">
 		<div class="col-lg-12">
-		  <h1>{{ vm.name }}</h1>	
+			<h1>{{ vm.name }}</h1>
 		</div>
 	</div>
-		<div class="row">
+	<!--  div class="row">
 		<div class="col-lg-12">
-		  <h1 ng-repeat="computador in vm.computadores">{{computador.monitores.length}}</h1>	
+			<h1 ng-repeat="computador in vm.computadores">{{computador.monitores.length}}</h1>
 		</div>
-	</div>
+	</div> -->
 	<div class="row">
 		<div class="col-lg-6 my-2 my-sm-2">
-		  <button type="button" class="btn btn-primary">Novo</button>	
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#exampleModal">Novo</button>
 		</div>
 		<div class="col-lg-6">
-		  <form class="form-inline float-sm-right">
-		    <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Search">
-		    <button class="btn btn-success my-2 my-sm-2" type="submit">Pesquisar</button>
-		  </form>
+			<form class="form-inline float-sm-right">
+				<input class="form-control my-2 my-sm-2" type="search"
+					placeholder="Pesquisar" aria-label="Search">
+			</form>
 		</div>
 	</div>
 
 	<div class="row">
-	  <div class="col-lg-12 table-responsive">
-	   <table class="table table-hover table-dark">
-	     <thead>
-	       <tr class="text-center">
-	         <th scope="col">#</th>
-	         <th scope="col">Computador</th>
-	         <th scope="col">Monitores</th>
-	         <th scope="col">Editar</th>
-	         <th scope="col">Excluir</th>
-		</thead>
-		<tbody class="text-center" ng-repeat='computador in vm.computadores'>
-			<tr>
-	            <td><b>{{$index+1}}</b></td>
-	            <td>{{computador.nome}}</td>
-	            <td>{{computador.monitores.length}}</td>
-	            <td><button ng-click="vm.updateComputador(computador.id)" type="button" class="btn btn-warning">ATT</button></td>
-	            <td><button ng-click="vm.deleteComputador(computador.id)" type="button" class="btn btn-danger">DEL</button></td>
-			</tr>
-		</tbody>
+		<div class="col-lg-12 table-responsive">
+			<table class="table table-hover table-dark">
+				<thead>
+					<tr class="text-center">
+						<th scope="col">#</th>
+						<th scope="col">Computador</th>
+						<th scope="col">Monitores</th>
+						<th scope="col">Editar</th>
+						<th scope="col">Excluir</th>
+				</thead>
+				<tbody class="text-center" ng-repeat='computador in vm.computadores'>
+					<tr>
+						<td><b>{{computador.id}}</b></td>
+						<td>{{computador.nome}}</td>
+						<td>{{computador.monitores.length}}</td>
+						<td><button type="button" class="btn btn-warning"
+								ng-click="vm.updateComputador(computador)" data-toggle="modal" data-target="#modalAtt">ATT</button></td>
+						<td><button ng-click="vm.deleteComputador(computador.id)"
+								type="button" class="btn btn-danger">DEL</button></td>
+					</tr>
+				</tbody>
 
-	 </table>
+			</table>
+		</div>
+
 	</div>
-    
-  </div>
+	<!-- Modal Cadastro -->
+	<div ng-controller="ComputadorController" class="modal fade"
+		id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cadastrar</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-6 ml-auto">
+								<div class="form-group">
+									<label for="nome" class="col-form-label">Nome:</label> <input
+										type="text" class="form-control" id="nome"
+										ng-model="vm.cp.nome">
+								</div>
+							</div>
+							<div class="col-lg-6 ml-auto">
+								<div class="form-group">
+									<label for="monitor1" class="col-form-label">Monitor
+										#1:</label> <input type="text" class="form-control" id="monitor1"
+										ng-model="vm.cp.monitores.monitor1.nome">
+								</div>
+								<div class="form-group">
+									<label for="monitor2" class="col-form-label">Monitor
+										#2:</label> <input type="text" class="form-control" id="monitor2"
+										ng-model="vm.cp.monitores.monitor2.nome">
+								</div>
+								<div class="form-group">
+									<label for="monitor3" class="col-form-label">Monitor
+										#3:</label> <input type="text" class="form-control" id="monitor3"
+										ng-model="vm.cp.monitores.monitor3.nome">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" ng-click="vm.teste()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Att -->
+	<div ng-controller="ComputadorController" class="modal fade"
+		id="modalAtt" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Atualizar</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12 ml-auto">
+								<div class="form-group">
+									<label for="nome" class="col-form-label">Nome:</label> <input
+										type="text" class="form-control" id="nome"
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" ng-click="vm.teste()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </div>

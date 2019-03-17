@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Monitor implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name="SQ_MN_ID", sequenceName="SQ_MN_ID", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_MN_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="SQ_MN_ID")
 	@Column(name="MN_ID")
 	private Long id;
 	
