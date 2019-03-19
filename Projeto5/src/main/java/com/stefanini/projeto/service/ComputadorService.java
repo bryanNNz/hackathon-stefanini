@@ -60,7 +60,7 @@ public class ComputadorService {
 
 		if(monitores != null) {
 			for (Monitor monitor : monitores) {
-				computador.addMonitores(monitor);
+				monitor.setComputador(computador);
 			}
 		}
 		
