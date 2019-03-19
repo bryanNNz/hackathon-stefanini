@@ -21,12 +21,7 @@ public class ComputadorService {
 	}
 	
 	public Computador save(Computador computador) throws TreinaException {
-		if(computador.getNome().length() > 20) {
-			throw new TreinaException("EXCESSO DE CARACTERES");
-		}
-		if(findByNome(computador.getNome()) == 1) {
-			throw new TreinaException("NOME JÁ UTILIZADO");
-		}
+		validaComputador(computador);
 		
 		List<Monitor> monitores = computador.getMonitores();
 
@@ -48,13 +43,7 @@ public class ComputadorService {
 	}
 	
 	public Computador update(Computador computador) throws TreinaException {
-		Computador cp = findById(computador.getId());
-		if(cp == null) {
-			throw new TreinaException("REGISTRO NAO EXISTE NO BANCO");
-		}
-		if(computador.getNome().length() > 20) {
-			throw new TreinaException("EXCESSO DE CARACTERES");
-		}
+		validaUpdateComputador(computador);
 
 		List<Monitor> monitores = computador.getMonitores();
 
@@ -74,5 +63,22 @@ public class ComputadorService {
 		}
 
 		repository.deleteById(idComputador);
+	}
+	
+	public void validaComputador(Computador computador) throws TreinaException {
+		if(computador.getNome().length() < 3 || computador.getNome().length() > 20) {
+			throw new TreinaException("Quantidade de caracteres invalida");
+		}
+		if(findByNome(computador.getNome()) == 1) {
+			throw new TreinaException("Nome em uso, tente outro");
+		}
+	}
+	
+	public void validaUpdateComputador(Computador computador) throws TreinaException {
+		Computador cp = findById(computador.getId());
+		if(cp == null) {
+			throw new TreinaException("Registro inexistente");
+		}
+		validaComputador(computador);
 	}
 }

@@ -19,7 +19,7 @@ public class Computador implements Serializable{
 	
 	@Id
 	@SequenceGenerator(name="SQ_CP_ID", sequenceName="SQ_CP_ID", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="SQ_CP_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_CP_ID")
 	@Column(name="CP_ID")
 	private Long id;
 	

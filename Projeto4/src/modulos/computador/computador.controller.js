@@ -18,7 +18,7 @@ export default class ComputadorController {
     
     this.deleteComputador =   function deleteComputador(id){
   	  if(computadorService.deleteComputador(id)){
-  		setTimeout("location.reload(true);", 4500);  		  
+  		setTimeout("location.reload(true);", 1500);  		  
   	  }
     }
     
@@ -27,6 +27,9 @@ export default class ComputadorController {
     }
     
     this.saveComputador =  function saveComputador(){
+    	if(this.cp.nome == ""){
+    		return false;
+    	}
     	if(this.monitor1.nome != ""){
     		this.cp.monitores.push(this.monitor1);
     	}
@@ -34,9 +37,10 @@ export default class ComputadorController {
     		this.cp.monitores.push(this.monitor2);
     	}
     	
-    	computadorService.saveComputador(this.cp);
+    	if(computadorService.saveComputador(this.cp)){
+    		setTimeout("location.reload(true);", 1500);    		
+    	}
     	
-    	setTimeout("location.reload(true);", 4500);
     }
     
     this.aux;

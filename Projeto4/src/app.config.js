@@ -10,15 +10,6 @@ export default function routing($stateProvider, $urlRouterProvider) {
       }
       $stateProvider.state(homeState);
       
-      let donoState = {
-        name: 'dono',
-        url: '/dono',
-        templateUrl: './modulos/dono/dono.view.html',
-        controller: 'DonoController',
-        controllerAs: 'vm'
-      }
-      $stateProvider.state(donoState);
-      
       let computadorState = {
         name: 'computador',
         url: '/computador',

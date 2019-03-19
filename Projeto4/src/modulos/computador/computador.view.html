@@ -5,11 +5,6 @@
 			<h1>{{ vm.name }}</h1>
 		</div>
 	</div>
-	<!--  div class="row">
-		<div class="col-lg-12">
-			<h1 ng-repeat="computador in vm.computadores">{{computador.monitores.length}}</h1>
-		</div>
-	</div> -->
 	<div class="row">
 		<div class="col-lg-6 my-2 my-sm-2">
 			<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -68,19 +63,18 @@
 						<div class="row">
 							<div class="col-md-6 ml-auto">
 								<div class="form-group">
-									<label for="nome" class="col-form-label">Nome:</label> <input
-										type="text" class="form-control" id="nome"
-										ng-model="vm.cp.nome">
+									<label for="nome" class="col-form-label">Nome:</label> 
+									<input type="text" class="form-control" id="nome" ng-model="vm.cp.nome" max-length="20" required>
 								</div>
 							</div>
 							<div class="col-lg-6 ml-auto">
 								<div class="form-group">
-									<label for="monitor1" class="col-form-label">Monitor
-										#1:</label> <input type="text" class="form-control" id="monitor1" ng-model="vm.monitor1.nome">
+									<label for="monitor1" class="col-form-label">Monitor#1:</label> 
+									<input type="text" class="form-control" id="monitor1" ng-model="vm.monitor1.nome">
 								</div>
 								<div class="form-group">
-									<label for="monitor2" class="col-form-label">Monitor
-										#2:</label> <input type="text" class="form-control" id="monitor2" ng-model="vm.monitor2.nome">
+									<label for="monitor2" class="col-form-label">Monitor#2:</label> 
+									<input type="text" class="form-control" id="monitor2" ng-model="vm.monitor2.nome">
 								</div>
 							</div>
 						</div>
@@ -112,9 +106,8 @@
 						<div class="row">
 							<div class="col-md-12 ml-auto">
 								<div class="form-group">
-									<label for="nome" class="col-form-label">Nome:</label> <input
-										type="text" class="form-control" id="nome" ng-model="vm.aux.nome"
-									>
+									<label for="nome" class="col-form-label">Nome:</label> 
+									<input type="text" class="form-control" id="nome" ng-minlength="2" ng-model="vm.aux.nome" required>
 								</div>
 							</div>
 						</div>
@@ -129,4 +122,10 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="fab">
+		<a class="btn btn-primary ml-auto" ui-sref="home" style="position: fixed; bottom: 3.5rem; right: 1.7rem">Home &#9166;</a>
+	</div>
 </div>
+

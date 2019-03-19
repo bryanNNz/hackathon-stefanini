@@ -19,7 +19,7 @@ public class Monitor implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name="SQ_MN_ID", sequenceName="SQ_MN_ID", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="SQ_MN_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_MN_ID")
 	@Column(name="MN_ID")
 	private Long id;
 	
